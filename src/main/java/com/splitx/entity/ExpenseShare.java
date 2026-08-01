@@ -26,4 +26,7 @@ public class ExpenseShare {
 
     @Column(name = "share_amount", nullable = false)
     private BigDecimal shareAmount;
+
+    @Column(name = "is_settled")
+    private Boolean isSettled;
 }
