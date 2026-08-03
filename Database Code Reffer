@@ -1,0 +1,74 @@
+create database splitx;
+show databases;
+drop database amit1;
+drop database ecommerce_practice;
+drop database sys;
+drop database thakur_clgip;
+show tables;
+
+USE splitx;
+SHOW TABLES;
+
+describe users;
+
+USE splitx;
+
+SELECT * FROM users;
+
+CREATE TABLE expense_groups (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    group_name VARCHAR(100) NOT NULL,
+    description VARCHAR(255),
+    created_by BIGINT NOT NULL,
+    created_at DATETIME NOT NULL,
+    CONSTRAINT fk_group_user
+        FOREIGN KEY (created_by) REFERENCES users(id)
+);
+
+SELECT * FROM expense_groups;
+
+CREATE TABLE expenses (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    group_id BIGINT NOT NULL,
+    paid_by BIGINT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    description VARCHAR(255),
+    created_at DATETIME NOT NULL,
+
+    CONSTRAINT fk_expense_group
+        FOREIGN KEY (group_id) REFERENCES expense_groups(id),
+
+    CONSTRAINT fk_expense_user
+        FOREIGN KEY (paid_by) REFERENCES users(id)
+);
+
+SELECT * FROM expenses;
+
+CREATE TABLE expense_shares (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    expense_id BIGINT NOT NULL,
+
+    user_id BIGINT NOT NULL,
+
+    share_amount DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT fk_share_expense
+        FOREIGN KEY(expense_id)
+        REFERENCES expenses(id),
+
+    CONSTRAINT fk_share_user
+        FOREIGN KEY(user_id)
+        REFERENCES users(id)
+);
+
+
+SELECT * FROM group_members;
+SELECT * FROM users;
+SELECT * FROM expense_groups;
+SELECT * FROM group_members;
+SELECT * FROM expenses;
+SELECT * FROM expense_shares;
+
+ALTER TABLE expense_shares
+ADD COLUMN is_settled BOOLEAN DEFAULT FALSE;
