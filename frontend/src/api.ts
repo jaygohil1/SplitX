@@ -7,10 +7,11 @@ import {
 } from './types';
 
 // Spring Boot backend base URL (configurable via Vite env)
-const BASE_URL =
-  (import.meta as unknown as { env?: { VITE_API_BASE_URL?: string } }).env
-    ?.VITE_API_BASE_URL || 'http://localhost:8080';
-
+const BASE_URL = (
+  (import.meta as unknown as {
+    env?: { VITE_API_BASE_URL?: string };
+  }).env?.VITE_API_BASE_URL || "http://localhost:8080"
+).replace(/\/+$/, "");
 // Request DTO interfaces matching backend expectations
 export interface RegisterUserRequest {
   fullName: string;
