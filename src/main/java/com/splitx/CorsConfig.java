@@ -1,3 +1,4 @@
+
 package com.splitx;
 
 import org.springframework.context.annotation.Bean;
@@ -15,11 +16,11 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
+                                "https://split-x-nu.vercel.app",
                                 "http://localhost:3000",
                                 "http://localhost:3001",
                                 "http://127.0.0.1:3000",
-                                "http://127.0.0.1:3001",
-                                "https://split-x-nu.vercel.app"
+                                "http://127.0.0.1:3001"
                         )
                         .allowedMethods(
                                 "GET", "POST", "PUT",
