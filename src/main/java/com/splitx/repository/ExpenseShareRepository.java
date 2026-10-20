@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface ExpenseShareRepository extends JpaRepository<ExpenseShare, Long> {
 
     List<ExpenseShare> findByExpenseId(Long expenseId);
+    List<ExpenseShare> findByExpenseIdIn(List<Long> expenseIds);
     List<ExpenseShare> findByUserId(Long userId);
     Optional<ExpenseShare> findByExpenseIdAndUserId(Long expenseId, Long userId);
 

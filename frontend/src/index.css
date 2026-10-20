@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-slate-950: var(--slate-950);
+  --color-slate-900: var(--slate-900);
+  --color-slate-800: var(--slate-800);
+  --color-slate-700: var(--slate-700);
+  --color-slate-600: var(--slate-600);
+  --color-slate-500: var(--slate-500);
+  --color-slate-400: var(--slate-400);
+  --color-slate-300: var(--slate-300);
+  --color-slate-200: var(--slate-200);
+  --color-slate-100: var(--slate-100);
+  
+  --color-emerald-300: #8cc9f9;
+  --color-emerald-400: #31a3fb;
+  --color-emerald-500: #1892f7;
+  --color-emerald-600: #0f55a8;
+  
+  --color-coral-500: #f43f5e;
+  --color-coral-400: #fb7185;
+  
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+:root {
+  /* Light Mode values (reversed) */
+  --slate-950: #f4f5f8; /* Background */
+  --slate-900: #ffffff; /* Cards / Modals */
+  --slate-800: #e2e8f0; /* Borders */
+  --slate-700: #cbd5e1; /* Hover states */
+  --slate-600: #94a3b8; /* Muted text */
+  --slate-500: #64748b; /* Secondary text */
+  --slate-400: #475569; /* Icons / Accents */
+  --slate-300: #334155;
+  --slate-200: #1e293b; /* Primary text */
+  --slate-100: #0f172a; /* Headings */
+}
+
+:root.dark {
+  /* Dark Mode values */
+  --slate-950: #0a0a0f;
+  --slate-900: #12121a;
+  --slate-800: #1a1a24;
+  --slate-700: #2a2a35;
+  --slate-600: #3f3f4e;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f8fafc;
+}
+
+body {
+  @apply bg-slate-950 text-slate-200 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-500 transition-colors duration-300;
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-700;
+}

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     private final ExpenseRepository expenseRepository;
 
     @Override
-    public String addExpense(AddExpenseRequest request) {
+    public Expense addExpense(AddExpenseRequest request) {
 
         Expense expense = Expense.builder()
                 .groupId(request.getGroupId())
@@ -26,8 +27,10 @@ public class ExpenseServiceImpl implements ExpenseService {
                 .createdAt(LocalDateTime.now())
                 .build();
 
-        expenseRepository.save(expense);
-
-        return "Expense Added Successfully";
+        return expenseRepository.save(expense);
+    }
+    @Override
+    public List<Expense> getExpensesByGroupId(Long groupId) {
+        return expenseRepository.findByGroupId(groupId);
     }
 }

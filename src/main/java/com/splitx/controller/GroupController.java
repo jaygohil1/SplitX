@@ -21,4 +21,13 @@ public class GroupController {
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+    @GetMapping("/id/{groupId}")
+    public ResponseEntity<?> getGroupById(@PathVariable Long groupId) {
+        return ResponseEntity.ok(groupService.getGroupById(groupId));
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getGroupsByUserId(@PathVariable Long userId) {
+        return ResponseEntity.ok(groupService.getGroupsByUserId(userId));
+    }
 }
